@@ -1,0 +1,32 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Codingame.Build</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Codingame.Build</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+    <Hidden>true</Hidden>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Codingame.Build.csproj" File="Codingame.Build.csproj" ReplaceParameters="true">
+      <Folder Name="build" TargetFolderName="build">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Codingame.Build.props">Codingame.Build.props</ProjectItem>
+      </Folder>
+      <Folder Name="buildMultiTargeting" TargetFolderName="buildMultiTargeting">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Codingame.Build.props">Codingame.Build.props</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CSFileInfo.cs">CSFileInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="CSharpFileJoiner.cs">CSharpFileJoiner.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="FileInfo.cs">FileInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="JoinSourceFilesTask.cs">JoinSourceFilesTask.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
