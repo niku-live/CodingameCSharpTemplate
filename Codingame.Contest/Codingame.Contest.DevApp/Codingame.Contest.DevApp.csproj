@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Codingame.Contest</RootNamespace>
+    <AssemblyName>Codingame.Contest</AssemblyName>
+  </PropertyGroup>  
+ 
+  <ItemGroup>
+    <ProjectReference Include="..\Codingame.Build\Codingame.Build.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TaskAssembly>bin\$(Configuration)\$(TargetFramework)\Codingame.Build.dll</TaskAssembly>
+  </PropertyGroup>
+  
+  <UsingTask TaskName="Codingame.Build.JoinSourceFilesTask" AssemblyFile="$(TaskAssembly)" />
+  
+  <Target Name="UpdateReleaseApp" AfterTargets="Build">
+    <JoinSourceFilesTask SourceFolder="$(MSBuildThisFileDirectory)" DestFile="$(MSBuildThisFileDirectory)..\Codingame.Contest.ReleaseApp\Program.cs" />
+  </Target>
+  
+</Project>
