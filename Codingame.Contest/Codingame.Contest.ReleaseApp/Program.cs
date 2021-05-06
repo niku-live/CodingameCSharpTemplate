@@ -67,17 +67,12 @@ using System.Reflection;
         public static GameAction Parse(string action)
         {
             string[] parts = action.Split(" ");
-            switch (parts[0])
+            return parts[0] switch
             {
-                case WAIT:
-                    return new GameAction(WAIT);
-                case SEED:
-                    return new GameAction(SEED, int.Parse(parts[1]), int.Parse(parts[2]));
-                case GROW:
-                case COMPLETE:
-                default:
-                    return new GameAction(parts[0], int.Parse(parts[1]));
-            }
+                WAIT => new GameAction(WAIT),
+                SEED => new GameAction(SEED, int.Parse(parts[1]), int.Parse(parts[2])),
+                _ => new GameAction(parts[0], int.Parse(parts[1])),
+            };
         }
 
         public string Type { get; set; }
@@ -97,15 +92,12 @@ using System.Reflection;
 
         public override string ToString()
         {
-            if (Type == WAIT)
+            return Type switch
             {
-                return GameAction.WAIT;
-            }
-            if (Type == SEED)
-            {
-                return $"{SEED} {SourceCellIdx} {TargetCellIdx}";
-            }
-            return $"{Type} {TargetCellIdx}";
+                WAIT => WAIT,
+                SEED => $"{SEED} {SourceCellIdx} {TargetCellIdx}",
+                _ => $"{Type} {TargetCellIdx}",
+            };
         }
     }
 
@@ -148,6 +140,14 @@ using System.Reflection;
             IsDormant = isDormant;
         }
     }
+
+////////////////////////////////////////////////////////////////////////////////
+//  Code from: .NETCoreApp,Version=v3.1.AssemblyAttributes.cs                 //
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//  Code from: Codingame.Contest.DevApp.AssemblyInfo.cs                       //
+////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Code from: GameConsole.cs                                                 //
@@ -281,11 +281,3 @@ using System.Reflection;
             }
         }
     }
-
-////////////////////////////////////////////////////////////////////////////////
-//  Code from: .NETCoreApp,Version=v3.1.AssemblyAttributes.cs                 //
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-//  Code from: Codingame.Contest.DevApp.AssemblyInfo.cs                       //
-////////////////////////////////////////////////////////////////////////////////

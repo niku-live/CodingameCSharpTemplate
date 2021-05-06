@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <TaskAssembly>bin\$(Configuration)\$(TargetFramework)\Codingame.Build.dll</TaskAssembly>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netcoreapp3.1</TaskFolder>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net48</TaskFolder>
+    <TaskAssembly>..\Codingame.Build\bin\$(Configuration)\$(TaskFolder)\Codingame.Build.dll</TaskAssembly>
   </PropertyGroup>
   
   <UsingTask TaskName="Codingame.Build.JoinSourceFilesTask" AssemblyFile="$(TaskAssembly)" />
