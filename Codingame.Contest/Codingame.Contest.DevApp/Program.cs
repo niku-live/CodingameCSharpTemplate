@@ -1,12 +1,18 @@
-using System;
-
 namespace Codingame.Contest
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            GameConsole.WriteLine("Hello World!");
+            Game game = new Game();
+            GameDataReader.ReadGameBoard(game);
+            // game loop
+            while (true)
+            {
+                GameDataReader.ReadTurnInfo(game);
+                var action = game.GetNextAction();
+                GameConsole.WriteLine(action);
+            }
         }
     }
 }
